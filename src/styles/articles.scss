@@ -1,0 +1,19 @@
+@import "./media.scss";
+
+.articles {
+  --articlesFilterGap: 10px 20px;
+
+  &__filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--articlesFilterGap);
+  }
+
+  @media(max-width: $mobile) {
+    --articlesFilterGap: 8px 12px;
+  }
+
+  &__slider {
+    display: flex;
+  }
+}

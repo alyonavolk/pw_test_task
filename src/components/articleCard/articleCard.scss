@@ -1,0 +1,191 @@
+@import "../../styles/mixin.scss";
+@import "../../styles/media.scss";
+
+.cardArticle {
+    --cardArticleMaxWd: 1180px;
+    --cardArticlePadding: 50px 25px 50px 50px;
+    --cardArticleGap: 30px;
+    --cardArticleFlexDiraction: row;
+    --cardArticleContentMaxWd: 750px;
+    --cardArticleContentPd: 0;
+    --cardArticleTitleMbBt: 15px;
+    --cardArticleTitleColor: currentColor;
+    --cardArticleDescrPdTop: 25px;
+    --cardArticleDescrLineClamp: 6;
+    --cardArticleImageMaxWd: 325px;
+    --cardArticleImageMaxHg: auto;
+
+    --cardArticleDatePosition: relative;
+    --cardArticleDateBackground: initial;
+    --cardArticleDateColor: var(--colorBaliHaiOpaciti50);
+    --cardArticleDatePadding: 15px 25px 0;
+    --cardArticleDateBorderRadius: 0;
+    
+    --cardArticleReadMoreLabelDisplay: block;
+    --cardArticleReadMoreBg: initial;
+    --cardArticleReadMoreIconColor: var(--colorPacificBlue);
+    --cardArticleReadMorePosition: relative;
+    --cardArticleReadMoreBgHover: initial;
+
+    position: relative;
+    border-radius: 20px;
+    position: relative;
+    max-width: var(--cardArticleMaxWd);
+    width: 100%;
+    display: flex;
+    flex-direction: var(--cardArticleFlexDiraction);
+    gap: var(--cardArticleGap);
+    padding: var(--cardArticlePadding);
+
+    box-shadow: var(--boxShadow);
+
+    @media(max-width: $mobile) {
+        --cardArticleMaxWd: 380px;
+        --cardArticleFlexDiraction: column;
+        --cardArticlePadding: 0;
+        --cardArticleContentPd: 0 25px 25px;
+        --cardArticleDescrLineClamp: 3;
+        --cardArticleTitleMbBt: 10px;
+        --cardArticleDescrPdTop: 10px;
+        --cardArticleImageMaxWd: 100%;
+        --cardArticleImageMaxHg: 257px;
+        --cardArticleGap: 25px;
+
+        --cardArticleReadMoreLabelDisplay: none;
+        --cardArticleReadMoreBg: var(--colorBlueLiner2);
+        --cardArticleReadMorePosition: absolute;
+        --cardArticleReadMoreIconColor: var(--colorWhite);
+        --cardArticleReadMoreBgHover: var(--colorPolar);
+    }
+
+    &--isSmall {
+        --cardArticleMaxWd: 380px;
+        --cardArticleFlexDiraction: column;
+        --cardArticlePadding: 0;
+        --cardArticleContentPd: 0 25px 25px;
+        --cardArticleDescrLineClamp: 3;
+        --cardArticleTitleMbBt: 10px;
+        --cardArticleDescrPdTop: 10px;
+        --cardArticleImageMaxWd: 100%;
+        --cardArticleImageMaxHg: 257px;
+        --cardArticleGap: 25px;
+
+        --cardArticleReadMoreLabelDisplay: none;
+        --cardArticleReadMoreBg: var(--colorBlueLiner2);
+        --cardArticleReadMorePosition: absolute;
+        --cardArticleReadMoreIconColor: var(--colorWhite);
+        --cardArticleReadMoreBgHover: var(--colorPolar);
+    }
+
+    &:hover {
+        --cardArticleTitleColor: var(--colorBCuriousBlue);
+    }
+
+
+    &__image {
+        @include transition;
+        --cardArticleDatePosition: absolute;
+        --cardArticleDateBackground: var(--colorBlueLiner2);
+        --cardArticleDateColor: var(--colorWhite);
+        --cardArticleDatePadding: 8px 25px;
+        --cardArticleDateBorderRadius: 0px 20px;
+
+        position: relative;
+        max-width: var(--cardArticleImageMaxWd);
+        width: 100%;
+        border-radius: 20px;
+        overflow: hidden;
+
+        img {
+            object-fit: cover;
+            max-width: auto;
+            width: 100%;
+            max-height: var(--cardArticleImageMaxHg);
+        }
+
+        &:hover {
+            filter: brightness(0.4);
+        }
+    }
+
+    &__content {
+        max-width: var(--cardArticleContentMaxWd);
+        width: 100%;
+        padding: var(--cardArticleContentPd);
+
+        &Bottom {
+            display: flex;
+            justify-content: space-between;
+            padding-top: 20px;
+        }
+    }
+
+    &__date {
+        --marginBottom: 0;
+
+        position: var(--cardArticleDatePosition);
+        bottom: 0;
+        background: var(--cardArticleDateBackground);
+        color: var(--cardArticleDateColor);
+        padding: var(--cardArticleDatePadding);
+        border-radius: var(--cardArticleDateBorderRadius);
+    }
+    
+    &__date & {
+        &--isSmall {
+            --cardArticleDescrLineClamp: 4;
+        }
+    }
+    
+    &__title {
+        @include transition;
+        @include lineClamp(2);
+        --marginBottom: var(--cardArticleTitleMbBt);
+        
+        color: var(--cardArticleTitleColor);
+    }
+
+    &__descr {
+        --marginBottom: 0;
+        @include lineClamp(var(--cardArticleDescrLineClamp));
+        padding-top: var(--cardArticleDescrPdTop);
+    }
+    
+    &__tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    &__readMore {
+        @include transition;
+
+        position: var(--cardArticleReadMorePosition);
+        top: 0;
+        right: 0;
+        background: var(--cardArticleReadMoreBg);
+        border-radius: 0 20px;
+
+        &:hover {
+            --cardArticleReadMoreBg: var(--cardArticleReadMoreBgHover);
+        }
+
+        .btn {
+            --btnIconColor: var(--cardArticleReadMoreIconColor);
+
+            &:hover {
+                --btnIconColor: var(--colorBaliHai);
+            }
+            
+            &__label {
+                display: var(--cardArticleReadMoreLabelDisplay);
+            }
+        }
+    }
+
+    a {
+        &::before {
+            width: 0 !important;
+        }
+    }
+}

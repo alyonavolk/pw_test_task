@@ -1,0 +1,152 @@
+@import "./mixin.scss";
+@import "./media.scss";
+
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6 {
+  --marginBottom: 24px;
+  --lineHeight: 1.2777;
+  --fontWeight: 400;
+  --tabletFontSize: 24px;
+  --mobileFontSize: 16px;
+  --paddingBottom: 0;
+
+  display: block;
+  line-height: var(--lineHeight);
+  font-weight: var(--fontWeight);
+  padding-bottom: var(--paddingBottom);
+
+  &:not(:last-child) {
+    margin-bottom: var(--marginBottom);
+  }
+
+}
+
+h1,
+.h1 {
+  @include fluidText(48, 24);
+
+  --lineHeight: ratio(40, 32);
+  --fontWeight: 400;
+}
+
+h2,
+.h2 {
+  @include fluidText(32, 22);
+
+  --lineHeight: ratio(36, 28);
+}
+
+h3,
+.h3 {
+  @include fluidText(24, 18);
+
+  --lineHeight: ratio(32, 24);
+}
+
+h4,
+.h4 {
+  @include fluidText(20, 16);
+
+  --lineHeight: ratio(28, 20);
+  --fontWeight: 700;
+}
+
+h5,
+.h5 {
+  @include fluidText(16, 16);
+
+  --lineHeight: ratio(24, 18);
+}
+
+.link,
+a {
+  text-decoration: none;
+  outline: none;
+
+  &[href^="tel:"],
+  &[href^="mailto:"],
+  &[href^="fax:"] {
+    height: 3rem;
+    display: inline-block;
+
+    &:not(.isNoUnderline) {
+      border-bottom: 1px solid currentColor;
+    }
+  }
+
+  * {
+    pointer-events: none;
+  }
+}
+
+.link {
+  &--isDark {
+    color: currentColor;
+    text-decoration: underline;
+  }
+}
+
+p {
+  --marginBottom: 3rem;
+
+  &:not(:last-child) {
+    margin-bottom: var(--marginBottom);
+  }
+}
+
+b,
+strong,
+.bold {
+  font-weight: bold;
+}
+
+small {
+  --smallColor: var(--colorGreyDark);
+  --smallFontSize: 100%;
+  --smallWidth: 100%;
+  --smallMb: .5rem;
+
+  font-size: var(--smallFontSize);
+  width: var(--smallWidth);
+  color: var(--smallColor);
+  display: block;
+
+
+  &:not(:last-child) {
+    margin-bottom: var(--smallMb);
+  }
+
+}
+
+img {
+  --offset: 3rem;
+
+  user-select: none;
+  height: auto;
+
+  &[height]:not([class]) {
+    @media(--mobile) {
+      height: auto;
+    }
+  }
+
+}
+
+address {
+  display: block;
+  font-style: normal;
+}
+
+hr {
+  color: var(--colorBaliHai);
+}

@@ -1,0 +1,30 @@
+.footer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background: url("../images/bgFooter.png"),
+    linear-gradient(112.54deg, #20242B 1.99%, #2C3440 98.06%);
+  background-size: cover, cover;
+  background-position: center, center;
+  background-repeat: no-repeat, no-repeat;
+
+
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 50px !important;
+    padding-bottom: 25px !important;
+  }
+
+  &__logo {
+    max-width: 265px;
+    width: 100%;
+
+    p {
+      color: var(--colorWhite);
+      padding-top: 8px;
+      font-size: 12px;
+    }
+  }
+}

@@ -1,0 +1,73 @@
+@import "../../styles/mixin.scss"; 
+
+.btn {
+  --btnMaxWidth: auto;
+  --btnMinWidth: 0;
+  --btnWidth: 100%;
+  --btnMaxHeight: auto;
+  --btnBorderRadius: 5px;
+  --btnPadding: 8px 20px;
+  --btnBackgroundColor: var(--colorPolar);
+  --btnColor: var(--colorBaliHai);
+  --btnIconColor: var(--colorPacificBlue);
+
+  @include transition;
+
+  background: var(--btnBackgroundColor);
+  color: var(--btnColor) !important;
+  border-radius: var(--btnBorderRadius);
+  border: none;
+  max-height: 100%;
+  height: var(--btnMaxHeight);
+  padding: var(--btnPadding);
+  cursor: pointer;
+  text-align: center;
+  display: flex;
+  align-items: center;
+
+  &:hover, &.active {
+    --btnColor: #ffffff;
+    --btnBackgroundColor: var(--colorBlueLiner2);
+
+    &::before {
+      width: 0 !important;
+    }
+  }
+
+  &::before {
+    content: '';
+    height: 0 !important;
+  }
+
+  svg path {
+    @include transition;
+    
+    fill: var(--btnIconColor) !important;
+  }
+
+  &--isInherit {
+    --btnBackgroundColor: initial;
+    --btnColor: var(--colorBaliHai);
+    --btnBackgroundColorHover: initial;
+    --btnPadding: 10px;
+    --btnMaxWidth: 30px;
+
+    &:hover, &.active {
+      --btnColor: var(--colorPacificBlue);
+      --btnBackgroundColor: initial;
+    }
+  }
+
+  &__icon {
+    display: inline-flex;
+    align-items: center;
+
+    &--left {
+      margin-right: 10px;
+    }
+
+    &--right {
+      margin-left: 10px;
+    }
+  }
+}

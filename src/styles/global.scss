@@ -1,0 +1,142 @@
+@import "./palette.scss";
+@import "./fonts.scss";
+@import "./layout.scss";
+@import "./section.scss";
+@import "./mixin.scss";
+@import "./media.scss";
+@import "./typo.scss";
+@import "./articles.scss";
+@import "./header.scss";
+@import "./footer.scss";
+@import "../components/articleCard/articleCard.scss";
+@import "../components/breadcrumbs/breadcrumbs.scss";
+@import "../components/btn/btn.scss";
+@import "swiper/css";
+@import "swiper/css/navigation";
+
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    line-height: 1.5;
+    font-family: ProximaNova, sans-serif;
+    margin: 0;
+    color: var(--colorAbbey);
+}
+
+ul,
+ol {
+    padding: 0;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul[class],
+ol[class],
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+    margin: 0;
+}
+
+ul[class],
+ol[class] {
+    list-style: none;
+}
+
+a, a[class] {
+    position: relative;
+    text-decoration: none;
+    color: currentColor;
+
+    &::before {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 1px;
+        bottom: -4px;
+        left: 50%;
+        background-color: currentColor;
+        transition: width 0.4s ease, left 0.4s ease;
+    }
+
+    &:hover {
+        &::before {
+            width: 100%;
+            left: 0;
+        }
+    }
+}
+
+a:not([class]) {
+    text-decoration-skip-ink: auto;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+article > * + * {
+    margin-top: 1em;
+}
+
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+.container {
+    --containerPaddingX: 24px;
+    --paddingTopBottom: 0;
+
+    width: 100%;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: var(--paddingTopBottom) var(--containerPaddingX);
+}
+
+@media (width <= 767px) {
+    .btn, .link {
+        font-size: 14px;
+    }
+}
+
+.container__line {
+    stroke-width: 1px;
+    stroke: var(--colorWhite);
+    width: 80vw;
+    opacity: 0.4;
+    margin-left: 0;
+}
+
+.isMt50 {
+    --marginTop: 50px;
+    margin-top: var(--marginTop);
+
+    @media(max-width: $mobile) {
+        --marginTop: 24px;
+    }
+}
+
+.isMb50 {
+    --marginBottom: 50px;
+    margin-bottom: var(--marginBottom);
+
+    @media(max-width: $mobile) {
+        --marginBottom: 24px;
+    }
+}

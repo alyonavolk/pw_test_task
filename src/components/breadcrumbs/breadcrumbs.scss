@@ -1,0 +1,29 @@
+@import "../../styles/media.scss";
+
+.breadcrumbs {
+  --breadcrumbsGapElements: 10px;
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--breadcrumbsGapElements);
+    color: var(--colorBaliHai);
+  }
+
+  &__link span {
+    color: var(--colorDoveGray);
+  }
+
+  &__item {
+    &:not(:last-child) {
+      &::after {
+        content: "/";
+        margin-left: var(--breadcrumbsGapElements);
+      }
+    }
+  }
+
+  @media(max-width: $mobile) {
+    --breadcrumbsGapElements: 5px;
+  }
+}

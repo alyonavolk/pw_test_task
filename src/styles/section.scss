@@ -1,0 +1,29 @@
+@import "./media.scss";
+
+.section {
+  --sectionBg: transparent;
+  --sectionMb: 100px;
+  --sectionHeaderMb: 50px;
+
+  background: var(--sectionBg);
+
+  &:not(:last-child) {
+    margin-bottom: var(--sectionMb);
+  }
+
+  @media(max-width: $tablet) {
+    --layoutSectionsGap: 64px;
+  }
+
+  @media(max-width: $mobile) {
+    --layoutSectionsGap: 36px;
+  }
+
+  &__header {
+    margin-bottom: var(--sectionHeaderMb);
+  }
+
+  @media(max-width: $mobile) {
+    --sectionHeaderMb: 24px;
+  }
+}
