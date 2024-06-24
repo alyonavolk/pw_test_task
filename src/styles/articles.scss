@@ -2,6 +2,7 @@
 
 .articles {
   --articlesFilterGap: 10px 20px;
+  --articlesSliderPt: 100px;
 
   &__filter {
     display: flex;
@@ -11,9 +12,10 @@
 
   @media(max-width: $mobile) {
     --articlesFilterGap: 8px 12px;
+    --articlesSliderPt: 50px;
   }
 
   &__slider {
-    display: flex;
+    padding-top: var(--articlesSliderPt);
   }
 }

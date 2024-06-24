@@ -1,11 +1,14 @@
-import swiper from "swiper";
+import Swiper from "swiper";
 import { Navigation } from "swiper/modules";
 
-export default class Slider {
+export class Slider {
   constructor (
     selector = ".swiper",
     config = {
+      slidesPerView: "auto",
+      spaceBetween: 20,
       direction: "horizontal",
+      loop: true,
       navigation: {
         nextEl: ".swiper-button-next",
         prevEl: ".swiper-button-prev"
@@ -14,18 +17,22 @@ export default class Slider {
   ) {
     this.selector = selector;
     if (this.selector) {
-      this.slider = new swiper(selector, {
+      this.slider = new Swiper(selector, {
         ...config,
         modules: [Navigation],
-        init: false,
-        autoHeight: true,
-        simulateTouch: false
+        autoHeight: true
       });
-      this.init(this.selector);
     }
   }
 
   init (selector) {
+    this.clickSlides();
     this.slider.init(selector);
+  }
+
+  clickSlides () {
+    this.slider.on("activeIndexChange", () => {
+      this.currentSlides(".slider__content--current");
+    });
   }
 }

@@ -1,4 +1,4 @@
-// import "./btn.scss";
+import "./btn.scss";
 import React from "react";
 
 const Btn = ({

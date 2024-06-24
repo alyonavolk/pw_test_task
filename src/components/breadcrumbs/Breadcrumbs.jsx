@@ -1,17 +1,17 @@
-// import "./breadcrumbs.scss";
+import "./breadcrumbs.scss";
 import React from "react";
 
 const Breadcrumbs = ({ items = [] }) => {
   return <nav className={"breadcrumbs"} aria-label="breadcrumb">
-    <ol className={"breadcrumbs__list"} itemscope itemtype="https://schema.org/BreadcrumbList">
+    <ol className={"breadcrumbs__list"} itemScope itemType="https://schema.org/BreadcrumbList">
     {items.map((val, index) => {
       return (
-        <li className={"breadcrumbs__item"} itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <li className={"breadcrumbs__item"} itemScope="itemListElement" itemType="https://schema.org/ListItem">
         {index + 1 === items.length
-          ? <span key={index} className={"breadcrumbs__link"} itemprop="name">{val.label}</span>
-          : <a key={index} className={"breadcrumbs__link"} href={val.link} itemprop={"item"}><span itemprop="name">{val.label}</span></a>
+          ? <span key={index} className={"breadcrumbs__link"} itemScope="name">{val.label}</span>
+          : <a key={index} className={"breadcrumbs__link"} href={val.link} itemScope={"item"}><span itemScope="name">{val.label}</span></a>
         }
-        <meta itemprop="position" content={val.content} />
+        <meta itemScope="position" content={val.content} />
       </li>
       );
     })}

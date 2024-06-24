@@ -8,10 +8,11 @@ const TerserPlugin = require('terser-webpack-plugin');
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const webpack = require('webpack');
+const NodePolyfillPlugin = require("node-polyfill-webpack-plugin")
 
 const path = require('path');
 
-module.exports = (env, argv) => {
+module.exports = async (env, argv) => {
     const mode = argv.mode;
     const isDevelopment = mode === 'development';
 
@@ -83,6 +84,23 @@ module.exports = (env, argv) => {
             extensions: ['.js', '.jsx', '.ts', '.tsx'],
         },
         plugins: [
+            new NodePolyfillPlugin(),
+            new CopyPlugin({
+                patterns: [
+                    {
+                        from: path.join(__dirname, 'src', 'fonts'),
+                        to: 'fonts'
+                    },
+                    {
+                        from: path.join(__dirname, 'src', 'images'),
+                        to: 'images'
+                    }
+                ]
+            }),
+            new HtmlWebpackPlugin({
+                template: path.join(__dirname, 'src', 'pages', 'index.html'),
+                filename: 'index.html'
+            }),
             new FileManagerPlugin({
                 events: {
                     onStart: {
@@ -101,22 +119,6 @@ module.exports = (env, argv) => {
             new ESLintPlugin({
                 context: path.resolve(__dirname, 'src', 'js'),
                 overrideConfigFile: path.resolve(__dirname, '.eslintrc.js'),
-            }),
-            new CopyPlugin({
-                patterns: [
-                    {
-                        from: path.join(__dirname, 'src', 'fonts'),
-                        to: 'fonts'
-                    },
-                    {
-                        from: path.join(__dirname, 'src', 'images'),
-                        to: 'images'
-                    }
-                ]
-            }),
-            isDevelopment && new HtmlWebpackPlugin({
-                template: path.join(__dirname, 'src', 'pages', 'index.html'),
-                filename: 'index.html'
             }),
             isDevelopment && new ReactRefreshWebpackPlugin(),
             new webpack.ProvidePlugin({

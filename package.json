@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "homepage": "",
+  "homepage": "https://alyonavolk.github.io/pw_test_task/",
   "scripts": {
     "start": "webpack serve --open --mode development -c webpack.config.js",
-    "build": "webpack --mode production && node render.js",
+    "build": "webpack --mode production",
     "build:dev": "webpack -c frontend/webpack.config.js --mode development",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d frontend/build"
@@ -34,6 +34,7 @@
     "html-webpack-plugin": "^5.5.1",
     "ignore-styles": "^5.0.1",
     "mini-css-extract-plugin": "^2.9.0",
+    "node-polyfill-webpack-plugin": "^4.0.0",
     "postcss": "^8.4.38",
     "postcss-loader": "^7.3.4",
     "postcss-mixins": "^10.0.1",

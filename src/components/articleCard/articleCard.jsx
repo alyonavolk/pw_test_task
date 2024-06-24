@@ -1,5 +1,5 @@
 import * as React from "react";
-// import "./articleCard.scss";
+import "./articleCard.scss";
 import Btn from "../btn/Btn";
 import Arrow from "../arrow/arrow";
 
